@@ -1,0 +1,224 @@
+Q1:
+
+
+
+a = [int(x) for x in input().split(",")]
+n=int(input())
+
+a.sort()
+
+
+def func(a,n):
+    i=0
+    j=len(a)-1
+    
+    if(len(a)==0): return 0
+    while(i<j):
+        if(a[i]+a[j]==n): 
+            return [i,j]
+        elif a[i]+a[j]>n : j=j-1
+        else : i=i+1
+    
+    return 0
+    
+print(func(a,n))
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q2:
+
+
+
+nums = [3,2,2,3]
+val = 3
+
+def func(nums,val):
+    i=0
+    j=0
+
+    cnt=0
+    for z in nums:
+        if(z!=val): cnt=cnt+1
+
+
+
+    while(i<len(nums) and j<len(nums) and cnt!=0):
+        if(nums[j]!=val) :
+            temp=nums[i]
+            nums[i]=nums[j]
+            nums[j]=temp
+            i=i+1
+            j=j+1
+        elif(nums[j]==val):
+            j=j+1
+       
+    return cnt
+ 
+t=func(nums,val)       
+print(t,nums[0:t])
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q3:
+
+
+nums = [1,3,5,6,7]
+target = 5
+
+def binary_search(arr, x):
+    i=0
+    j=len(nums)-1
+    mid = 0
+ 
+    while i <= j:
+ 
+        mid = (i + j) // 2
+ 
+        # If x is greater, ignore left half
+        if arr[mid] < x:
+            i = mid + 1
+ 
+        # If x is smaller, ignore right half
+        elif arr[mid] > x:
+            j = mid - 1
+ 
+        # means x is present at mid
+        else:
+            return mid
+ 
+    # If we reach here, then the element was not present
+    return -1
+
+    
+ 
+t=binary_search(nums,target)
+if t==-1:
+    for i in range(len(nums)):
+        if(nums[i]>target):
+            t=i
+            break;
+print(t)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q4:
+
+d=[9,9,9]
+
+def digits(d):
+
+        
+        l=len(d)
+        x=0
+        for i in range(l):
+             x=x*10+d[i]
+
+        x=x+1
+
+        r=[]
+        while(x!=0):
+            r.insert(0,x%10)
+            x=x//10
+        return r
+        
+print(digits(d))
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q5
+
+nums1 = [1,2,3,0,0,0]
+m = 3
+nums2 = [2,5,6]
+n = 3
+def merge(nums1,m,nums2,n) :
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+
+        i=m-1
+        j=n-1
+        l=len(nums1)-1
+
+        while(i>=0 and j>=0):
+            if(nums1[i]>=nums2[j]):
+                nums1[l]=nums1[i]
+                l=l-1
+                i=i-1
+            else:
+                nums1[l]=nums2[j]
+                l=l-1
+                j=j-1
+        while(j>=0 and l>=0):
+            nums1[l]=nums2[j]
+            l=l-1
+            j=j-1
+  
+merge(nums1,m,nums2,n)    
+print(nums1)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q6:
+
+nums=[1,2,3,1]
+
+def containsDuplicate(nums) :
+        di={}
+
+        for i in nums:
+            if(i in di.keys()):
+                #print("yes")
+                return True
+            else:
+                di[i]=1
+                #print(di)
+
+        return False
+        
+        
+print(containsDuplicate(nums))
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q7:
+
+nums=[0,1,0,3,12]
+def moveZeroes( nums) :
+        i,j=0,1
+        while(j<len(nums)):
+            if(nums[j]==0 and nums[i]==0):j=j+1
+            elif(nums[i]==0):
+                nums[i],nums[j]=nums[j],nums[i]
+                i=i+1
+                j=j+1
+            else:
+                i=i+1
+                j=j+1
+        
+moveZeroes(nums)
+print(nums)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q8:
+
+
+
+nums = [1,2,2,4]
+def func(nums) :
+        nums.sort()
+        l=len(nums)
+        dt={}
+        a=0
+        b=0
+        for i in nums:
+            if(i in dt.keys()): dt[i]=dt[i]+1
+            else:dt[i]=1
+        print(dt)
+        for i in range(l):
+            if(not(i+1  in dt.keys())):
+                b=i+1
+            elif(dt[i+1]==2): a=i+1
+        return [a,b]
+print(func(nums))
