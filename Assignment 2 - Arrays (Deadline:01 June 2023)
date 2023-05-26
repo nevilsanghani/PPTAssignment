@@ -82,8 +82,15 @@ print(canPlaceFlowers(flower,n))
 
 Q5:
 
+nums=[1,2,3]
 
-
+def func(nums):
+    if(len(nums)<3): return -1
+    nums.sort()
+    return max(nums[0]*nums[1]*nums[-1],nums[-1]*nums[-2]*nums[-3])
+    
+    
+print(func(nums))
 
 
 
