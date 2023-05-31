@@ -1,0 +1,179 @@
+Q1:
+
+s = "egg", t = "add"
+
+def isIsomorphic( s, t) :
+        if(len(s)!=len(t)): return False
+
+        for i in range(len(s)):
+            if(s.index(s[i])!=t.index(t[i])): return False
+
+        return True
+		
+print(isIsomorphic(s,t)
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Q2:
+
+dt={"1":"1","0":"0","8":"8","6":"9","9":"6"}
+
+
+
+s="609"
+
+
+
+def fun(s):
+    x=0
+    y=len(s)-1
+    while(x<=y):
+        
+        if(dt[s[x]]!=s[y]):
+            return False
+        x=x+1
+        y=y-1
+        
+    return True
+    
+print(fun(s))
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q3:
+
+
+num1 = "11"
+num2 = "123"
+
+def addStrings(num1, num2) :
+        m=len(num1)
+        n=len(num2)
+
+        if(m<n):
+            for i in range(n-m):
+                num1='0'+num1
+        else:
+            for i in range(m-n):
+                num2='0'+num2
+
+
+
+
+        c=0
+        l=[]
+        for i in range(len(num1),0,-1):
+            
+            z=int(num1[i-1])+int(num2[i-1])+c
+            c=0
+            #print(z)
+            if(z>9):
+                l.insert(0,z%10)
+                c=z//10
+            else: l.insert(0,z)
+        if c!=0: l.insert(0,c) 
+        re=""
+        #print(l)
+        for x in l:
+            re=re+str(x)
+
+        return re
+
+print (addStrings(num1,num2))
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q4:
+
+
+s="Let's take LeetCode contest"
+def reverseWords(s) :
+
+        ls=s.split(" ")
+        rls=[]
+        for i in ls:
+            x=""
+            for j in range(len(i),0,-1):
+                x=x+i[j-1]
+            rls.append(x)
+
+        re=rls[0]
+
+        for x in range(1,len(rls)):
+            re=re+" "+rls[x]
+
+
+        return re
+print(reverseWords(s) )
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Q5:
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Q6:
+
+
+s = "abcde"
+goal = "cdeab"
+def rotateString(s, goal) :
+
+        for i in range(len(s)):
+
+            x=s[i+1:]+s[0:i+1]
+
+            if(x==goal): return True
+
+
+        return False
+        
+        
+print(rotateString(s,goal))
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q7:
+
+
+s = "ab#c"
+t = "ad#c"
+def bc( s) :
+        i=0
+        x=""
+        skip=0
+        for i in range(len(s),0,-1):
+            if(s[i-1]=='#'): skip=skip+1
+            elif(skip==0):
+                x=s[i-1]+x
+            else: skip=skip-1
+
+        return x
+def backspaceCompare( s, t) :
+
+        if(bc(s)==bc(t)): return True
+        return False
+        
+print(backspaceCompare(s,t))
+-------------------------------------------------------------------------------------------------------------------------------------------------
+Q8:
+
+
+c=[[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]
+def checkStraightLine( c) :
+
+       if(len(c)<=2): return True
+       if (c[1][0]-c[0][0]==0):
+            for i in range(2,len(c)):
+               if((c[i][0]-c[i-1][0])!=0): return False
+            return True
+
+       slope=(c[1][1]-c[0][1])/(c[1][0]-c[0][0])
+
+       for i in range(2,len(c)):
+           if((c[i][0]-c[i-1][0])==0): return False
+           sl=(c[i][1]-c[i-1][1])/(c[i][0]-c[i-1][0])
+           if(sl!=slope):return False
+
+
+       return True
+       
+       
+       
+print(checkStraightLine(c))
