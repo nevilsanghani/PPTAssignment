@@ -1,0 +1,8 @@
+1. 
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("demo").getOrCreate()
+
+df=a.read.option("header",True).csv("a.csv")
+df.show(10)
